@@ -1,0 +1,84 @@
+.course-types {
+  background: linear-gradient(135deg, #13265b, #af2e82);
+  color: #fff;
+  padding: 80px 0;
+}
+.section-title {
+  font-weight: 800;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+.section-sub {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.type-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 30px 15px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.type-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.15);
+}
+.course-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+.count-digit {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.count-title {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.visa-types {
+  background: linear-gradient(135deg, #13265b, #af2e82);
+  padding: 80px 0;
+  color: #fff;
+}
+.section-title {
+  font-weight: 800;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+.section-sub {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+.visa-card {
+  background: #fff;
+  color: #333;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.visa-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+.visa-icon {
+  font-size: 36px;
+  color: #5B8CFF;
+  margin-bottom: 15px;
+}
+.visa-card h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.visa-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
