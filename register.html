@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Kyouiku Lanka — Register / Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===== Minimal page styles (no external libs) ===== -->
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#9ca3af; --brand:#8b2b2b; --brand-2:#a63636; --ok:#16a34a; --err:#dc2626;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:linear-gradient(135deg,#0b1229,#1f2545);
+      color:#e5e7eb; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .card{
+      width:100%; max-width:900px; background:rgba(17,24,39,.85); border:1px solid rgba(255,255,255,.06);
+      border-radius:18px; box-shadow:0 20px 60px rgba(0,0,0,.35); overflow:hidden;
+    }
+    .grid{ display:grid; grid-template-columns:1.2fr .8fr; }
+    @media (max-width: 900px){ .grid{ grid-template-columns:1fr; } }
+
+    .left{ padding:28px; }
+    .right{ padding:28px; background:linear-gradient(160deg,rgba(139,43,43,.95),rgba(166,54,54,.95)); }
+
+    h1{ margin:0 0 6px; font-size:28px; font-weight:800; }
+    p.lead{ margin:0 0 18px; color:#cbd5e1; }
+    .muted{ color:var(--muted); }
+
+    .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (max-width:600px){ .row{ grid-template-columns:1fr; } }
+
+    label{ font-size:13px; color:#cbd5e1; margin-bottom:6px; display:block; }
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; background:#0b1020; border:1px solid rgba(255,255,255,.08);
+      color:#e5e7eb; outline:none; transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus{ border-color:#5b8cff; box-shadow:0 0 0 3px rgba(91,140,255,.15); }
+    textarea{ min-height:150px; resize:vertical; }
+
+    .actions{ display:flex; gap:10px; margin-top:12px; align-items:center; }
+    .btn{
+      display:inline-flex; justify-content:center; align-items:center; gap:8px;
+      padding:12px 18px; border-radius:12px; border:none; font-weight:700; cursor:pointer;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; width:100%;
+      transition: transform .15s ease, box-shadow .2s ease, opacity .2s;
+    }
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 10px 24px rgba(0,0,0,.25); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    .note{ font-size:12px; color:var(--muted); }
+
+    .right h3{ margin:0 0 12px; font-size:20px; font-weight:800; }
+    .info{ display:grid; gap:10px; }
+    .info-item{ display:flex; gap:10px; align-items:flex-start; }
+    .bullet{
+      flex:0 0 36px; height:36px; border-radius:50%;
+      background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; font-weight:800;
+      color:#fff;
+    }
+    .info a{ color:#fff; text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35); }
+    .info a:hover{ border-bottom-color:#fff; }
+
+    /* Toast */
+    .toast{
+      position:fixed; left:50%; bottom:20px; transform:translateX(-50%);
+      background:#0b1020; border:1px solid rgba(255,255,255,.1); color:#e5e7eb; padding:12px 14px; border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35); display:none; z-index:9999; max-width:90%;
+    }
+    .toast.ok{ border-color: rgba(22,163,74,.4); }
+    .toast.err{ border-color: rgba(220,38,38,.45); }
+  </style>
+</head>
+<body>
+
+  <main class="card grid" aria-label="Register / Contact">
+    <!-- Left: form -->
+    <section class="left">
+      <h1>Register / Contact</h1>
+      <p class="lead">Tell us your details and we’ll get back to you.</p>
+
+      <form id="register_form" novalidate>
+        <div class="row">
+          <div>
+            <label for="name">Full Name*</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email*</label>
+            <input id="email" name="email" type="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" placeholder="+94 77 123 4567" />
+          </div>
+          <div>
+            <label for="subject">Subject (optional)</label>
+            <input id="subject" name="subject" type="text" placeholder="e.g., JLPT N5 Registration" />
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <label for="message">Message*</label>
+          <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+        </div>
+
+        <!-- Honeypot (spam trap) -->
+        <input type="text" name="website" style="display:none">
+
+        <div class="actions">
+          <button type="submit" id="submitBtn" class="btn">Send</button>
+          <span class="note">* Required fields</span>
+        </div>
+      </form>
+    </section>
+
+    <!-- Right: info -->
+    <aside class="right">
+      <h3>Contact Info</h3>
+      <div class="info">
+        <div class="info-item">
+          <span class="bullet">☎</span>
+          <div>
+            +94 76 419 2801<br>
+            <a href="mailto:kikyouikulanka@gmail.com">kikyouikulanka@gmail.com</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="bullet">📍</span>
+          <div>Osaka, Japan</div>
+        </div>
+        <div class="info-item">
+          <span class="bullet">🌐</span>
+          <div><a href="https://www.kyouikulanka.com" target="_blank" rel="noopener">www.kyouikulanka.com</a></div>
+        </div>
+      </div>
+      <p style="margin-top:16px" class="muted">We typically reply within 1–2 business days.</p>
+    </aside>
+  </main>
+
+  <!-- Toasts -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ===== Client-side JS to call your serverless endpoint ===== -->
+  <script>
+    // 1) Set this to your deployed serverless URL (Vercel/Netlify/Cloudflare Worker).
+    //    Example Vercel route: https://your-domain.vercel.app/api/contact
+    const ENDPOINT_URL = "https://your-domain.vercel.app/api/contact";
+
+    const form = document.getElementById('register_form');
+    const btn  = document.getElementById('submitBtn');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg, ok=true){
+      toast.textContent = msg;
+      toast.className = 'toast ' + (ok ? 'ok' : 'err');
+      toast.style.display = 'block';
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=> toast.style.display='none', 4000);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // honeypot
+      if (form.website && form.website.value.trim() !== '') return;
+
+      // basic validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const subject = (form.subject?.value || '').trim();
+      const phone = (form.phone?.value || '').trim();
+
+      if (!name || !email || !message) {
+        showToast('Please fill in required fields.', false);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(ENDPOINT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message, phone })
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.ok === false) {
+          throw new Error(data.error || 'Request failed');
+        }
+
+        showToast('Thanks! Your message has been received.', true);
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        showToast('Sorry, we could not submit your message.', false);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send';
+      }
+    });
+  </script>
+
+  <!--
+    ========================= IMPORTANT =========================
+    You MUST deploy a serverless function that receives POST JSON
+    and writes to MongoDB (Atlas Data API via a secure environment).
+    Example (Vercel): file /api/contact.js with:
+
+    export default async function handler(req, res) {
+      if (req.method !== 'POST') return res.status(405).end();
+      const { name, email, subject = '', message, phone = '' } = req.body || {};
+      if (!name || !email || !message) {
+        return res.status(400).json({ ok:false, error:'Missing required fields' });
+      }
+      try {
+        const r = await fetch(process.env.DATA_API_URL + '/action/insertOne', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': process.env.DATA_API_KEY
+          },
+          body: JSON.stringify({
+            dataSource: 'Cluster0',
+            database: 'kyouiku',
+            collection: 'contacts',
+            document: { name, email, subject, message, phone, createdAt: new Date() }
+          })
+        });
+        const json = await r.json();
+        if (json.error) throw new Error(json.error);
+        res.status(201).json({ ok:true });
+      } catch (e) {
+        console.error(e);
+        res.status(500).json({ ok:false, error:'Server error' });
+      }
+    }
+
+    Environment vars on Vercel:
+      DATA_API_URL  -> from MongoDB Atlas (Data API URL)
+      DATA_API_KEY  -> Data API key (keep secret!)
+    =============================================================
+  -->
+</body>
+</html>
