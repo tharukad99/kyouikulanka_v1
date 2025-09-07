@@ -321,3 +321,9 @@
 .white-text {
   color: white;
 }
+
+
+.center-textaa {
+  display: flex;
+  justify-content: center;
+}
