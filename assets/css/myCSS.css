@@ -82,3 +82,242 @@
   line-height: 1.6;
   margin: 0;
 }
+
+
+/* -------------------- */
+/* container */
+.why-choose { position: relative; background: #fff; padding: 80px 0; }
+
+/* top soft image strip — replace the image path with your asset */
+.why-top-bg{
+  position:absolute; inset:0 0 auto 0; height:180px;
+  background: url('assets/images/why-choose-top.jpg') center/cover no-repeat;
+  opacity:.25; pointer-events:none;
+}
+
+/* left side headings */
+.why-eyebrow{
+  color:#f5a425; font-weight:700; margin:0 0 10px; letter-spacing:.02em;
+}
+.why-title{
+  color:#1c2a4b; font-weight:800; font-size: clamp(32px, 5vw, 56px);
+  line-height:1.05; margin:0 0 18px;
+}
+.why-lead{
+  color:#33405c; font-size:1.05rem; line-height:1.8; max-width: 600px;
+}
+
+/* right side list */
+.why-list{ list-style:none; padding:0; margin:0; }
+.why-item{
+  display:flex; align-items:flex-start; gap:18px; margin-bottom:26px;
+}
+.why-icon{
+  flex:0 0 44px; height:44px; border-radius:50%;
+  background:#f5a425; color:#fff; display:inline-flex; align-items:center; justify-content:center;
+  font-size:18px;
+}
+.why-text h5{ margin:2px 0 6px; font-weight:700; color:#1c2a4b; }
+.why-text p{ margin:0; color:#4b5875; line-height:1.7; }
+
+/* responsive spacing */
+@media (max-width: 991.98px){
+  .why-choose{ padding: 60px 0; }
+  .why-top-bg{ height:140px; }
+}
+
+/* -------------------- */
+
+.type-card {
+  background: rgba(255,255,255,0.05);
+  padding: 30px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.type-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-6px);
+}
+.course-icon {
+  width: 50px;
+  margin-bottom: 15px;
+}
+.course-code {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f4a300; /* goldish */
+  margin-bottom: 8px;
+}
+.course-title {
+  font-size: 15px;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* keep images neat */
+.image-slider .item img{
+  width:100%;
+  height:450px;         /* adjust if needed */
+  object-fit:cover;
+  border-radius:10px;
+}
+
+
+
+
+.contact-sidebar {
+  background: #8B2B2B; /* dark red */
+  color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.contact-sidebar h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.contact-sidebar p {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.contact-sidebar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* social icons */
+.contact-sidebar .social-links a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 20px;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.contact-sidebar .social-links a:hover {
+  color: #ffd700; /* gold on hover */
+}
+
+
+/* -------------------------------- */
+
+/* Positioning */
+.quick-contact{
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+.qc-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+
+/* Round buttons */
+.qc-btn{
+  width:64px; height:64px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#fff; font-size:26px; border:none; outline:none; cursor:pointer;
+  box-shadow:0 12px 24px rgba(0,0,0,.18);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.qc-btn:hover{ transform: translateY(-2px); box-shadow:0 16px 28px rgba(0,0,0,.22); text-decoration:none; }
+
+/* Brand-ish backgrounds */
+.qc-phone{ background: linear-gradient(145deg,#6ee7b7,#34d399); }
+.qc-whatsapp{ background: linear-gradient(145deg,#25D366,#128C7E); }
+.qc-messenger{ background: linear-gradient(145deg,#6AA9FF,#1877F2); }
+.qc-instagram{ background: radial-gradient(circle at 30% 110%,#feda75 0,#0077b5 45%,#005582 60%,#4f5bd5 90%); }
+.qc-location{ background: linear-gradient(145deg,#34D399,#059669); }
+.qc-close{ background: linear-gradient(145deg,#6476ff,#4a5bd5); }
+
+/* Re-open launcher (shown when bar hidden) */
+.qc-launch{
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  width:58px; height:58px; border-radius:50%;
+  background:#4a5bd5; color:#fff; display:none; align-items:center; justify-content:center;
+  font-size:22px; box-shadow:0 10px 22px rgba(0,0,0,.18);
+  z-index: 9999; cursor:pointer;
+}
+.qc-launch:hover{ transform: translateY(-2px); }
+
+/* Hidden state */
+.quick-contact.is-hidden{ pointer-events:none; }
+.quick-contact.is-hidden .qc-btn{ opacity:0; transform: translateX(6px) scale(.9); }
+
+/* Small screens tweak */
+@media (max-width: 480px){
+  .qc-btn{ width:56px; height:56px; font-size:22px; }
+  .quick-contact{ right:14px; }
+  .qc-launch{ right:14px; }
+}
+
+
+
+
+/* --------------------- */
+
+/* Contact Section */
+.contact-us {
+  padding: 60px 0;
+}
+
+.contact-form h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#contact_form input,
+#contact_form textarea {
+  width: 100%;
+  border-radius: 50px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+#contact_form textarea {
+  min-height: 150px;
+  resize: none;
+}
+
+.btn-submit {
+  display: inline-block;
+  width: 30%;
+  padding: 12px;
+  background: #7a1e1e;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: #a62828;
+}
+
+
+.white-text {
+  color: white;
+}
