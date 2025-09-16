@@ -54,8 +54,8 @@
         <!-- Language Switcher -->
         <div class="lang-switcher">
           <li><a href="index.html">EN</a></li>
-          <li><a href="index-si.html">සිං</a></li>
-          <li><a href="index-ja.html">日本語</a></li>
+          <li><a href="Tras/index-si.html">සිං</a></li>
+          <li><a href="Tras/index-ja.html">日本語</a></li>
         </div>
   </header>
 
@@ -468,6 +468,7 @@
     <script src="assets/js/slick-slider.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/myCuston.js"></script>
+    <script src="assets/js/emailjs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <!-- Font Awesome 5+ (put once in <head>) -->
@@ -522,9 +523,33 @@
         });
     </script>
 
-   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<!-- +++++++++++++++++ Email JS ++++++++++++++++++++++++++++++++++++ -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("3nvi8u9AkGeCTkS7K"); // Replace with your EmailJS Public Key
+    })();
+  </script>
+
+  <script>
+    document.getElementById("contact_form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm("service_h0lyqtn", "template_bq3i06y", this)
+        .then(function() {
+          alert("Message sent successfully! ✅");
+        }, function(error) {
+          alert("Failed to send message ❌: " + JSON.stringify(error));
+        });
+    });
+  </script>
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
 
 </body>
 
-</body>
 </html>

@@ -332,7 +332,7 @@
 /* Switch Language */
 .lang-switcher {
   position: fixed; top: 10px; right: 12px; z-index: 3000;
-  display: flex; gap: 8px; font-weight: 600;
+  display: flex; gap: 8px; font-weight: 600; font-size: 80%;
 }
 .lang-switcher a {
   padding: 6px 10px; border-radius: 6px; text-decoration: none;

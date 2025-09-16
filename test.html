@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="si">
+
+  <head>
+
+    
+</head>
+
+<body>
+
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+     emailjs.init("kD_fKezKPi6RmQL4v"); // Replace with your EmailJS Public Key
+  })();
+</script>
+
+
+
+<form id="contact-form">
+  <label>Name</label>
+  <input type="text" name="from_name" required>
+
+  <label>Email</label>
+  <input type="email" name="reply_to" required>
+
+  <label>Message</label>
+  <textarea name="message" required></textarea>
+
+  <button type="submit">Send</button>
+</form>
+
+
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm("service_g0qiv1b", "template_c6l4fkk", this)
+      .then(function() {
+        alert("Message sent successfully! ✅");
+      }, function(error) {
+        alert("Failed to send message ❌: " + JSON.stringify(error));
+      });
+  });
+</script>
+
+
+</html>

@@ -44,22 +44,29 @@ $(function () {
 
 
       
-(function(){
-        // Replace with your actual PUBLIC KEY
-        emailjs.init("3nvi8u9AkGeCTkS7K"); 
-      })();
+// (function(){
+//         // Replace with your actual PUBLIC KEY
+//         // emailjs.init("3nvi8u9AkGeCTkS7K"); 
+//         emailjs.init("kD_fKezKPi6RmQL4v");//cakey
+//       })();
 
-      const contactForm = document.getElementById("contact_form");
-        if (contactForm) {
-          contactForm.addEventListener("submit", function (event) {
-            event.preventDefault();
+//       const contactForm = document.getElementById("contact_form");
+//         if (contactForm) {
+//           contactForm.addEventListener("submit", function (event) {
+//             event.preventDefault();
 
-            emailjs.sendForm("service_h0lyqtn", "template_bq3i06y", this)
-              .then(function () {
-                alert("Message sent successfully!");
-                contactForm.reset();
-              }, function (error) {
-                alert("Failed to send message. Error: " + JSON.stringify(error));
-              });
-          });
-        }
+//             emailjs.sendForm("service_g0qiv1b", "template_b8benjx", this)//cakey
+//             // emailjs.sendForm("service_h0lyqtn", "template_bq3i06y", this)
+//               .then(function () {
+//                 alert("Message sent successfully!");
+//                 contactForm.reset();
+//               }, function (error) {
+//                 alert("Failed to send message. Error: " + JSON.stringify(error));
+//               });
+//           });
+//         }
+
+
+
+
+
